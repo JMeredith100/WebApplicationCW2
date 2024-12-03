@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-title">
+    <h1>Your liked posts</h1>
+    {{home.description}}
+</div>
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+{% for post in posts %}
+    <div class="post-info card">
+        <div class="post-interior">
+            <h5 class="post-title">{{post.title}}</h5>
+            <p class="post-date">Posted on {{post.date}} by <a href="/profile/{{ post.dbusers.id }}">{{post.dbusers.username}}</a></p>
+            <p class="post-content">{{post.content}}</p>
+            <p><a class="post-likes" id="{{ post.id }}"><span id="like-label">Likes: </span><span id="like-number">{{post.likes}}</span></a></p>
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}

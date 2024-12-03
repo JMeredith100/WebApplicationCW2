@@ -1,0 +1,21 @@
+#form_title {
+    text-align: center;
+    padding-bottom: 5%;
+    padding-top: 15%;
+}
+
+#creation_link {
+    text-align: center;
+    font-style: italic;
+}
+
+#post_tooltip {
+    text-align: center;
+    font-style: italic;
+    padding-bottom: 5%;
+    padding-top: 10px;
+}
+
+.form_item {
+    padding-top: 5%;
+}

@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% block content %}
+
+<div class="page-title">
+    <h1>{{author.username}}'s Profile</h1>
+    {{home.description}}
+    {% if author.username == user.username %}
+        <p class="delete-profile"><a href="/delete/{{ user.id }}">DELETE PROFILE</a></p>
+    {% endif %}
+    
+</div>
+
+<meta name="csrf-token" content="{{ csrf_token() }}">
+{% for post in posts %}
+    <div class="post-info card">
+        <div class="post-interior">
+            <h5 class="post-title">{{post.title}}</h5>
+            <p class="post-date">Posted on {{post.date}} by {{post.dbusers.username}}</p>
+            <p class="post-content">{{post.content}}</p>
+
+            {% if post.dbusers.username == user.username %}
+                <p><span id="delete-post"><a href="/delete/{{ user.id }}/{{ post.id }}">Delete Post</a></span> <a class="post-likes" id="{{ post.id }}"><span id="like-label">Likes: </span><span id="like-number">{{post.likes}}</span></a></p>
+            {% else %}
+                <p><a class="post-likes" id="{{ post.id }}"><span id="like-label">Likes: </span><span id="like-number">{{post.likes}}</span></a></p>
+            {% endif %}
+        </div>
+    </div>
+{% endfor %}
+
+{% endblock %}
